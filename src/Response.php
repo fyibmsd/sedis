@@ -11,7 +11,7 @@ class Response
         return Server::format(Server::STRING, $string);
     }
 
-    public static function int($number)
+    public static function int(int $number)
     {
         return Server::format(Server::INT, $number);
     }
@@ -19,6 +19,11 @@ class Response
     public static function nil()
     {
         return Server::format(Server::NIL);
+    }
+
+    public static function wrongtype()
+    {
+        return self::error('WRONGTYPE Operation against a key holding the wrong kind of value');
     }
 
     public static function invalidArguments(string $method)

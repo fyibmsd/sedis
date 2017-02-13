@@ -4,7 +4,6 @@ namespace SwooleRedis;
 
 use ArrayIterator;
 use Swoole\Redis\Server;
-use SwooleRedis\Structure\AbstractStructure;
 
 class Service
 {
@@ -14,10 +13,16 @@ class Service
 
     public static $keys = null;
 
+    private $host;
+
+    private $port;
+
     public function __construct($host, $port)
     {
         $this->server = new Server($host, $port, SWOOLE_BASE);
-        self::$keys = new ArrayIterator();
+        $this->host   = $host;
+        $this->port   = $port;
+        self::$keys   = new ArrayIterator();
 
         $this->server->set([
             'server'  => [
@@ -43,8 +48,15 @@ class Service
         }
     }
 
+    public function addModules(array $modules)
+    {
+        foreach ($modules as $module) $this->add($module);
+    }
+
     public function start()
     {
+        printf("Swoole Redis Server running at tcp://%s:%s\n", $this->host, $this->port);
+
         return $this->server->start();
     }
 }

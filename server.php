@@ -1,17 +1,22 @@
 <?php
 
 use SwooleRedis\Service;
+use SwooleRedis\Structure\Common;
+use SwooleRedis\Structure\Lists;
+use SwooleRedis\Structure\Sets;
+use SwooleRedis\Structure\Strings;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$cfg = require __DIR__ . '/config/server.php';
+$config = require __DIR__ . '/config/server.php';
 
-$rds = new Service($cfg['host'], $cfg['port']);
+$service = new Service($config['host'], $config['port']);
 
-$rds->add(\SwooleRedis\Structure\Strings::class);
+$service->addModules([
+    Common::class,
+    Strings::class,
+    Lists::class,
+    Sets::class
+]);
 
-$rds->add(\SwooleRedis\Structure\Lists::class);
-
-$rds->add(\SwooleRedis\Structure\Sets::class);
-
-$rds->start();
+$service->start();
