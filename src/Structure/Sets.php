@@ -8,12 +8,12 @@ use SwooleRedis\Service;
 
 class Sets extends AbstractStructure
 {
-    public static $commands = ['sadd', 'scard', 'sismember'];
+    public static $commands = ['sadd', 'scard', 'sismember', 'srem'];
 
     public function sadd($fd, $data)
     {
         if (count($data) !== 2)
-            return Response::invalidArguments(__METHOD__);
+            return Response::wrongNumber(__METHOD__);
 
         if (!Service::$keys->offsetExists($data[0])) {
             Service::$keys[$data[0]] = new ArrayIterator();
@@ -38,10 +38,19 @@ class Sets extends AbstractStructure
     public function sismember($fd, $data)
     {
         if (count($data) !== 2)
-            return Response::invalidArguments(__METHOD__);
+            return Response::wrongNumber(__METHOD__);
 
         $instance = Service::$keys[$data[0]];
 
         return Response::int($instance->offsetExists($data[1]));
+    }
+
+    public function srem($fd, $data)
+    {
+        if (count($data) < 1) {
+            return Response::wrongNumber(__METHOD__);
+        }
+
+        $instance = Service::$keys[$data[0]];
     }
 }

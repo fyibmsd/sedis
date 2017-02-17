@@ -16,17 +16,27 @@ class Response
         return Server::format(Server::INT, $number);
     }
 
+    public static function set(array $data)
+    {
+        return Server::format(Server::SET, $data);
+    }
+
+    public static function map(array $data)
+    {
+        return Server::format(Server::MAP, $data);
+    }
+
     public static function nil()
     {
         return Server::format(Server::NIL);
     }
 
-    public static function wrongtype()
+    public static function wrongType()
     {
         return self::error('WRONGTYPE Operation against a key holding the wrong kind of value');
     }
 
-    public static function invalidArguments(string $method)
+    public static function wrongNumber(string $method)
     {
         $message = sprintf('ERR wrong number of arguments for \'%s\' command', explode('::', $method)[1]);
 

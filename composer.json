@@ -1,5 +1,7 @@
 {
-    "require": {},
+    "require": {
+        "ext-swoole": "^1.9.5"
+    },
     "autoload": {
         "psr-4": {
             "SwooleRedis\\": "src/"

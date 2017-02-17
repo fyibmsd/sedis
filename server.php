@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 use SwooleRedis\Service;
@@ -7,6 +8,8 @@ use SwooleRedis\Structure\Sets;
 use SwooleRedis\Structure\Strings;
 
 require __DIR__ . '/vendor/autoload.php';
+
+ini_set('memory_limit', '-1');
 
 $config = require __DIR__ . '/config/server.php';
 

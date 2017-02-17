@@ -26,7 +26,7 @@ class Lists extends AbstractStructure
     public function lpop($fd, $data)
     {
         if (!Service::$keys->offsetExists($data[0])) {
-            return Response::invalidArguments(__METHOD__);
+            return Response::wrongNumber(__METHOD__);
         }
 
         return Response::string(Service::$keys[$data[0]]->shift());
@@ -46,7 +46,7 @@ class Lists extends AbstractStructure
     public function rpop($fd, $data)
     {
         if (!Service::$keys->offsetExists($data[0])) {
-            return Response::invalidArguments(__METHOD__);
+            return Response::wrongNumber(__METHOD__);
         }
 
         return Response::string(Service::$keys[$data[0]]->pop());
@@ -55,7 +55,7 @@ class Lists extends AbstractStructure
     public function llen($fd, $data)
     {
         if (!isset($data[0])) {
-            return Response::invalidArguments(__METHOD__);
+            return Response::wrongNumber(__METHOD__);
         }
 
         $len = Service::$keys->offsetExists($data[0]) ? Service::$keys[$data[0]]->count() : 0;

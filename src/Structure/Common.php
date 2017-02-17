@@ -12,7 +12,7 @@ class Common extends AbstractStructure
     public function del($fd, $data)
     {
         if (count($data) === 0) {
-            return Response::invalidArguments(__METHOD__);
+            return Response::wrongNumber(__METHOD__);
         }
 
         $count = 0;
@@ -30,7 +30,7 @@ class Common extends AbstractStructure
     public function ping($fd, $data)
     {
         if (count($data) > 1) {
-            return Response::invalidArguments(__METHOD__);
+            return Response::wrongNumber(__METHOD__);
         }
 
         $message = isset($data[0]) ? $data[0] : 'PONG';

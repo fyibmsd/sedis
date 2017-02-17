@@ -21,7 +21,7 @@ class Strings extends AbstractStructure
     public function get($fd, $data)
     {
         if (count($data) !== 1) {
-            return Response::invalidArguments(__METHOD__);
+            return Response::wrongNumber(__METHOD__);
         }
 
         if (Service::$keys->offsetExists($data[0])) {
@@ -38,7 +38,7 @@ class Strings extends AbstractStructure
 
             return Server::format(Server::STATUS, 'OK');
         } else {
-            return Response::invalidArguments(__METHOD__);
+            return Response::wrongNumber(__METHOD__);
         }
     }
 }
