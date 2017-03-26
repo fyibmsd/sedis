@@ -1,10 +1,10 @@
 <?php
 
-namespace SwooleRedis\Structure;
+namespace Sedis\Structure;
 
 use ArrayIterator;
-use SwooleRedis\Response;
-use SwooleRedis\Service;
+use Sedis\Response;
+use Sedis\Service;
 
 class Sets extends AbstractStructure
 {

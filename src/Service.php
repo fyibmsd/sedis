@@ -1,12 +1,14 @@
 <?php
 
-namespace SwooleRedis;
+namespace Sedis;
 
 use ArrayIterator;
 use Swoole\Redis\Server;
 
 class Service
 {
+    const SEDIS_VERSION = 'v1.0.0';
+
     private $modules = [];
 
     private $server = null;

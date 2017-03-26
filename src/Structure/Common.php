@@ -1,9 +1,9 @@
 <?php
 
-namespace SwooleRedis\Structure;
+namespace Sedis\Structure;
 
-use SwooleRedis\Response;
-use SwooleRedis\Service;
+use Sedis\Response;
+use Sedis\Service;
 
 class Common extends AbstractStructure
 {

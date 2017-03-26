@@ -1,6 +1,6 @@
 <?php
 
-namespace SwooleRedis;
+namespace Sedis;
 
 use Swoole\Redis\Server;
 
@@ -46,5 +46,12 @@ class Response
     public static function error(string $message)
     {
         return Server::format(Server::ERROR, $message);
+    }
+
+    public static function log(string $log, $status = null)
+    {
+        echo $log . PHP_EOL;
+
+        if ($status !== null) exit($status);
     }
 }

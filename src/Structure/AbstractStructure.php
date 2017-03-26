@@ -1,6 +1,6 @@
 <?php
 
-namespace SwooleRedis\Structure;
+namespace Sedis\Structure;
 
 abstract class AbstractStructure
 {

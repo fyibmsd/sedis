@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/config/bootstrap.php';
+
+/**
+ * Start Medis Server
+ *
+ * use -h to get help
+ */
+Bootstrap::run();
